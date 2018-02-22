@@ -1,0 +1,98 @@
+using System.Collections.Generic;
+
+namespace ParallelZodiac
+{
+    public class Step
+    {
+        public int ID;
+        public int QuestID;
+        public string StepName;
+        public string Dialogue;
+        public string ExceptionDialogue;
+        public bool UseGeneric;
+        public bool UseTyped;
+        public Dictionary<GameObject, int> Reward;
+        public List<Detail> Details;
+        public int AmountOfAttempts = -1;
+        int AttempsCompleted = 0;
+
+        public Step()
+        {
+            Details = new List<Detail>();
+            Reward = new Dictionary<GameObject, int>();
+        }
+
+        public void StartStep()
+        {
+            //TODO: Update journal
+        }
+
+        public void CompleteStep()
+        {
+            //TODO: Update jounral
+            GiveReward();
+        }
+
+        void GiveReward()
+        {
+            if (Reward.Count == 0)
+                return;
+
+            //TODO: Player or inventory or what?
+            var player = GameObject.FindWithTag("Player");
+            player.AddItems(Reward);    //TODO: Loop through reward here or in player?
+        }
+
+        public void DetailComplete(int detailID, int stepID)
+        {
+            if (stepID != ID)
+            {
+                //TODO: Should I do something?
+            }
+            int completedDetails = 0;
+            int detailsPerStep = 0;
+
+            for (int i = 0; i < Details.Count; i++)
+            {
+                detailsPerStep++;
+                if (Details[i].Completed)
+                {
+                    completedDetails++;
+                }
+            }
+
+            if (completedDetails == detailsPerStep)
+            {
+                Script parentScript = this.transform.parent.GetComponent<Script>();
+                parentScript.ProgressStep();
+            }
+        }
+
+        public void DetailFailed(int detailID, int stepID)
+        {
+            if (AmountOfAttempts == -1)
+            {
+                ResetStep();
+            }
+            else
+            {
+                AttempsCompleted++;
+                if (AmountOfAttempts == AttempsCompleted)
+                {
+                    Script parentScript = this.transform.parent.GetComponent<Script>();
+                    //TODO: Have detail/step failure allow new branches to follow 
+                    parentScript.FailQuest();
+                }
+                else
+                {
+                    ResetStep();
+                }
+            }
+        }
+
+        void ResetStep()
+        {
+            //TODO: Fetch data from database, remake Details? No, because I have to also reset the NPCs and such. I'll need an origin and shit for EVERY item and detail
+        }
+    }
+}

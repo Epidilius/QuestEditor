@@ -1,0 +1,1 @@
+﻿./cloud_sql_proxy -instances=parallelzodiac:us-central1:parallelzodiac=tcp:3306 -credential_file="E:\Projects\Unity\QuestEditor\ParallelZodiac-ad08a947f22c.json"

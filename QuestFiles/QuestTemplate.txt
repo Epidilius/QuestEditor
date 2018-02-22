@@ -1,0 +1,65 @@
+namespace ParallelZodiac
+{
+    class [[QUESTCLASS]] : Quest
+    {
+        public [[QUESTCLASS]]()
+        {
+            QuestID          = [[QUESTID]];
+            QuestName        = "[[QUESTNAME]]";
+            QuestDescription = "[[QUESTDESCRIPTION]]";
+            Version          = "[[QUESTVERSION]]";
+            CurrentStep      = CreateFirstStep();
+            Steps.Add(CurrentStep);
+
+            CreateSteps();
+            CreateDetails();
+        }
+
+        void CreateSteps()
+        {
+[[STEPCREATION]]
+        }
+        public void CreateDetails()
+        {
+[[DETAILCREATION]]
+        }
+
+        Step CreateFirstStep()
+        {
+            Step step = new Step();
+            step.ID = 0;
+            step.QuestID = QuestID;
+            step.StepName = "Quest Locked";
+
+            return step;
+        }
+        Step CreateStep(int id, int questID, string name, string dialogue, string exDialogue, bool useGeneric, bool useTyped, string reward, int rewardAmount)
+        {
+            Step step = new Step();
+            step.ID = id;
+            step.QuestID = questID;
+            step.StepName = name;
+            step.Dialogue = dialogue;
+            step.ExceptionDialogue = exDialogue;
+            step.UseGeneric = useGeneric;
+            step.UseTyped = useTyped;
+            step.Reward = GameObject.Find(reward);
+            step.RewardAmount = rewardAmount;
+            return step;
+        }
+        Detail CreateDetail(int id, int stepID, string activeEntity, int action, int amount, float timerLength, /*DateTime dateLimit,*/ string passiveEntity)
+        {
+            //TODO: If entity is Player, do I need to do a find by tag?
+            Detail detail = new Detail();
+            detail.ID = id;
+            detail.StepID = stepID;
+            detail.ActiveEntity = GameObject.Find(activeEntity); //Find by tag instead?
+            detail.Action = action;
+            detail.Amount = amount;
+            detail.TimerLength = timerLength;
+            detail.PassiveEntity = GameObject.Find(passiveEntity);
+            detail.SetupDetail();
+            return detail;
+        }
+    }
+}

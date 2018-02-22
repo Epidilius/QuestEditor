@@ -1,0 +1,70 @@
+namespace ParallelZodiac
+{
+    public class Detail
+    {
+        public enum DetailState
+        {
+            //Locked = 0,
+            InProgress = 0,
+            Completed,
+            Failed
+        }
+        public int ID;
+        public int StepID;
+        public GameObject ActiveEntity;
+        public GameObject PassiveEntity;
+        public int Action;
+        public int Amount;
+        public float TimerLength;
+        public DetailState State;
+
+        Timer DetailTimer;
+        int AmountCompleted;
+        //public DateTime DateLimit;
+
+        public Detail()
+        {
+
+        }
+
+        public void SetupDetail()
+        {
+            AmountCompleted = 0;
+            PassiveEntity.AddObserver(Action, DetailProgressed);
+            State = DetailState.InProgress;
+
+            if (TimerLength != -1)
+                CreateTimer();
+        }
+
+        void CreateTimer()
+        {
+            DetailTimer = new Timer(TimerLength);
+            DetailTimer.AddCompletedCallback(TimerComplete);
+            DetailTimer.Start();
+        }
+
+        //Callback Functions
+        public void DetailProgressed()
+        {
+            if (Amount != -1)
+                AmountCompleted++;
+
+            if (AmountCompleted == Amount || Amount == -1)
+            {
+                Script parentScript = this.transform.parent.GetComponent<Script>();
+                State = DetailState.Completed;
+                DetailTimer.Stop();
+                parentScript.DetailComplete(ID, StepID);
+            }
+        }
+
+        public void TimerComplete()
+        {
+            State = DetailState.Failed;
+
+            Script parentScript = this.transform.parent.GetComponent<Script>();
+            parentScript.DetailFailed(ID, StepID);
+        }
+    }
+}

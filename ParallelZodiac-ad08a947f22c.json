@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "parallelzodiac",
+  "private_key_id": "ad08a947f22c77ce7fed4b5d5f9701e026f86807",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDPgGYQxSV+5QJ7\n6ekGt1duWvm+Lzjx2Le9Iij6HGP017lhl2DsXQ/2x+W/W7mncMwkBNTjJj33omGe\nqDk63ELKXznJnsZGXEzKTi88FnwfZtHBdJcN/6v/VwUb9Thy/y/MWpBDcOzti/gx\nbP6E7MN2Tmg0Gflk2wiaIklYdgmkAOBNBcNWxJw0OhT9nJKGZtdRHoUmHWCZRqeW\nCZ9hjIoDeZVCZ2ctdP7f9Y3N5MntSPQhHym7u+ovjxl14bZTOG9yt/+alNMts8pm\nMaE+XrJfVF0KNtKXtCMiQxaXjXhLTLZN2LR1wwae7fJ28zCy3/SotsShHtScrpi2\nXAWujI1FAgMBAAECggEAUS95/566/GqKrcPHrh6GwUEsDJq6S3mQ7hmS8cSw4SeU\nOxg4zlHdAJ+WhufS/C24WXFgf91DCoQIcMR928c5BKf8WqPaDMZpLxAnD/n2J20Z\nrXi57zq052r7L0SjCO9KGsjmP9TLhmeovGHaNVTTZxLnV1dAShMeyvuWOdu5Cuat\n0Qm24NYPymASMCPbWRBC4GK7O4AGp3di29jKpXqlfP1084mCa/x0R/tz3mvXMWU7\n9CAq0Drr5bqL7bXPOuLEM6z+B61kRF9ss4cEEUan3BpWU1zUq/t0iUdqqJrg7Pol\n1nHlH3B9qRAnjlA2ofRA74Cosdr3xcD/GXLlzKgs0wKBgQD7hKBaMZoJv8A8ZDJQ\n68Wvct0rakix0M9nnRk+qViENZU/eDCqHIMRaab6d4KYP+KK2im6YAJOpTAL5b00\nsFADVwFTPNx6KPM+8Qc4fKgdtrFubhQgJ0vj5G1eBFK7Ili09yj5G0UGRPBKYZXs\nds2EPzaikaFyl8QElifMVlZP7wKBgQDTMvphTCI7/aPWXutgh5lp9F+TScDNrZWA\nqkuCmM+pI1vjC8SYD6xfZy8iDB8yTxf5kx0zfcreSnILrbURUQVLa/yLAOQxNJj/\nhR9kIFPdR0b96Hmn3PR5etOR8pCFAKC2TKFjsTcpA9t5zcXOv5mWDGzqz1eWfzXb\nqQ6jL/zCCwKBgQCB3g4p4/ikVgT9acLtM4AEQmvekedtIOMmneA+EZSp1zzz46xE\n+anXYNUd+H1O/ZWMmm73U8F9OB/h1MLoJK17u/3sK72vuds3QZ631O29QerFmUL9\nAy1VQ0oRRGwvQeHJtuDKFwGB5jCoR1DxIrqlMTqVoFpbX++ParSr9lxkswKBgBf+\nAY2ODZGNFdCjhc+4d8gel8DurvVuk75DGkLiwyxutOCNFK9FkIph+Wu/vseDTrDu\ncnHIB4TLJjuHZztpXdWcldrgpguk8wCMCe3g8kX/8+OiRje4lRk7x88bpClH0foD\nqI3fsul447TpmGANShBOpwzhswyItQCYKu6E5AzTAoGBAJnhut9ygaxSl7YKeu1X\nTczY2c+Bu0CFv/zirLwOzpQ75pWA12tkW9mxrxCW7OgvO6eZrE9uUQY6bEn1qLBu\nt6Ue3ahBU1WVQY84xBOR1VLQwTSY0z1VlDnYSe4SsusuBwP77QV7C5iSj7qLFWlA\nKGsxQEJ7Uk0//05eaePn5yjH\n-----END PRIVATE KEY-----\n",
+  "client_email": "databasemanager@parallelzodiac.iam.gserviceaccount.com",
+  "client_id": "104661659781234311301",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://accounts.google.com/o/oauth2/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/databasemanager%40parallelzodiac.iam.gserviceaccount.com"
+}

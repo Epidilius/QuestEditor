@@ -1,0 +1,57 @@
+using System.Linq;
+
+namespace ParallelZodiac
+{
+    public class Quest
+    {
+        protected List<Step> Steps;
+        public GameObject Player;
+        public int QuestID;
+        public string QuestName;
+        public string QuestDescription;
+        public Step CurrentStep;
+        public string Version;
+
+        public Quest()
+        {
+            Steps = new List<Step>();
+        }
+
+        public void FailQuest()
+        {
+            //TODO: Display failure for all to see
+        }
+
+        void ProgressStep()
+        {
+            //TODO: Display dialogue 
+            CurrentStep.CompleteStep();
+            NextStep();
+        }
+
+        void NextStep()
+        {
+            for (int i = 0; i < Steps.Count(); i++)
+            {
+                if (Steps[i] == CurrentStep)
+                {
+                    CurrentStep = Steps[i + 1];
+                    if (CurrentStep == Steps.Last())
+                    {
+                        CompleteQuest();
+                    }
+                    else
+                    {
+                        CurrentStep.StartStep();
+                    }
+                    break;
+                }
+            }
+        }
+
+        void CompleteQuest()
+        {
+
+        }
+    }
+}

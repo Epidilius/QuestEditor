@@ -1,0 +1,71 @@
+namespace ParallelZodiac
+{
+    class RescueThePrincess : Quest
+    {
+        public RescueThePrincess()
+        {
+            QuestID = 1;
+            QuestName = @"Rescue The Princess";
+            QuestDescription = @"We need a hero";
+            CurrentStep = CreateFirstStep();
+            Version = "4.9.4";
+            Steps.Add(CurrentStep);
+
+            CreateSteps();
+            CreateDetails();
+        }
+
+        void CreateSteps()
+        {
+            Steps.Add(CreateStep(1, QuestID, "Reach the top of the castle", "kjfhdg...", "", false, false, "Gold", 3000));
+            Steps.Add(CreateStep(2, QuestID, "Protect Doug", "Follow me to the castle", "", false, false, "Sword", 1));
+            Steps.Add(CreateStep(3, QuestID, "Talk to Doug", "Thats the castle where the princess at", "", false, false, "", 0));
+            //...
+        }
+        public void CreateDetails()
+        {
+            //The ID is the StepID from the Details table. NOT minus 1 because the step at 0 is from CreateFirstStep()
+            Steps[1].Details.Add(CreateDetail(1002, 1, "Player", 5, -1, -1, "Doug"));
+            Steps[2].Details.Add(CreateDetail(1003, 2, "Doug", 1, -1, 100, "Castle"));
+            Steps[2].Details.Add(CreateDetail(1004, 2, "Player", 3, -1, -1, "Doug"));
+            //...
+        }
+
+        Step CreateFirstStep()
+        {
+            Step step = new Step();
+            step.ID = 0;
+            step.QuestID = QuestID;
+            step.StepName = "Quest Locked";
+
+            return step;
+        }
+        Step CreateStep(int id, int questID, string name, string dialogue, string exDialogue, bool useGeneric, bool useTyped, string reward, int rewardAmount)
+        {
+            Step step = new Step();
+            step.ID = id;
+            step.QuestID = questID;
+            step.StepName = name;
+            step.Dialogue = dialogue;
+            step.ExceptionDialogue = exDialogue;
+            step.UseGeneric = useGeneric;
+            step.UseTyped = useTyped;
+            step.Reward = reward;
+            step.RewardAmount = rewardAmount;
+            return step;
+        }
+        Detail CreateDetail(int id, int stepID, string activeEntity, int action, int amount, float timerLength, /*DateTime dateLimit,*/ string passiveEntity)
+        {
+            Detail detail = new Detail();
+            detail.ID = id;
+            detail.StepID = stepID;
+            detail.ActiveEntity = activeEntity;
+            detail.Action = action;
+            detail.Amount = amount;
+            detail.TimerLength = timerLength;
+            detail.PassiveEntity = passiveEntity;
+            detail.SetupDetail();
+            return detail;
+        }
+    }
+}
