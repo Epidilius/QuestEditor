@@ -55,13 +55,13 @@ namespace QuestEditor
             
             questTemplate = CreateQuestData(questID, questTemplate);
 
-            var stepIDs = DatabaseManager.GetStepsForQuest(questID);
+            var stepIDs = DatabaseManager.GetStepIDsForQuest(questID);
             for(int i = 0; i < stepIDs.Rows.Count; i++)
             {
                 var stepID = Convert.ToInt32(stepIDs.Rows[i][0]);
                 questTemplate = (CreateStepData(stepID, questTemplate));
 
-                var detailIDs = DatabaseManager.GetDetailsForStep(stepID);
+                var detailIDs = DatabaseManager.GetDetailIDsForStep(stepID);
                 for(int j = 0; j < detailIDs.Rows.Count; j++)
                 {
                     var detailID = Convert.ToInt32(detailIDs.Rows[j][0]);

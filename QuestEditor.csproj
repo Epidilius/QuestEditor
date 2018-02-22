@@ -60,17 +60,17 @@
     <Compile Include="Forms\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="ParallelZodiacDataSet.Designer.cs">
+    <Compile Include="DataSets\ParallelZodiacDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ParallelZodiacDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="ParallelZodiacDataSetDialogue.Designer.cs">
+    <Compile Include="DataSets\ParallelZodiacDataSetDialogue.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ParallelZodiacDataSetDialogue.xsd</DependentUpon>
     </Compile>
-    <Compile Include="ParallelZodiacDataSetSteps.Designer.cs">
+    <Compile Include="DataSets\ParallelZodiacDataSetSteps.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ParallelZodiacDataSetSteps.xsd</DependentUpon>
@@ -124,37 +124,37 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="ParallelZodiacDataSet.xsc">
+    <None Include="DataSets\ParallelZodiacDataSet.xsc">
       <DependentUpon>ParallelZodiacDataSet.xsd</DependentUpon>
     </None>
-    <None Include="ParallelZodiacDataSet.xsd">
+    <None Include="DataSets\ParallelZodiacDataSet.xsd">
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>ParallelZodiacDataSet.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="ParallelZodiacDataSet.xss">
+    <None Include="DataSets\ParallelZodiacDataSet.xss">
       <DependentUpon>ParallelZodiacDataSet.xsd</DependentUpon>
     </None>
-    <None Include="ParallelZodiacDataSetDialogue.xsc">
+    <None Include="DataSets\ParallelZodiacDataSetDialogue.xsc">
       <DependentUpon>ParallelZodiacDataSetDialogue.xsd</DependentUpon>
     </None>
-    <None Include="ParallelZodiacDataSetDialogue.xsd">
+    <None Include="DataSets\ParallelZodiacDataSetDialogue.xsd">
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>ParallelZodiacDataSetDialogue.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="ParallelZodiacDataSetDialogue.xss">
+    <None Include="DataSets\ParallelZodiacDataSetDialogue.xss">
       <DependentUpon>ParallelZodiacDataSetDialogue.xsd</DependentUpon>
     </None>
-    <None Include="ParallelZodiacDataSetSteps.xsc">
+    <None Include="DataSets\ParallelZodiacDataSetSteps.xsc">
       <DependentUpon>ParallelZodiacDataSetSteps.xsd</DependentUpon>
     </None>
-    <None Include="ParallelZodiacDataSetSteps.xsd">
+    <None Include="DataSets\ParallelZodiacDataSetSteps.xsd">
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>ParallelZodiacDataSetSteps.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="ParallelZodiacDataSetSteps.xss">
+    <None Include="DataSets\ParallelZodiacDataSetSteps.xss">
       <DependentUpon>ParallelZodiacDataSetSteps.xsd</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">

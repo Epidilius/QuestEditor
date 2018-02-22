@@ -141,9 +141,17 @@ namespace QuestEditor
         }
         public static DataTable GetStepsForQuest(int questID)
         {
+            return RunQuery("SELECT * FROM Steps WHERE QuestID LIKE '" + questID + "'");
+        }
+        public static DataTable GetStepIDsForQuest(int questID)
+        {
             return RunQuery("SELECT ID FROM Steps WHERE QuestID LIKE '" + questID + "'");
         }
         public static DataTable GetDetailsForStep(/*int questID, */int stepID)
+        {
+            return RunQuery("SELECT * FROM Details WHERE StepID LIKE '" + stepID + "'");
+        }
+        public static DataTable GetDetailIDsForStep(/*int questID, */int stepID)
         {
             return RunQuery("SELECT ID FROM Details WHERE StepID LIKE '" + stepID + "'");
         }
