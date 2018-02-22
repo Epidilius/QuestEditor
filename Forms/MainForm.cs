@@ -19,7 +19,7 @@ namespace QuestEditor
             PopulateQuestTable();
         }
         
-        //DB Stuff
+        //DB STUFF
         private void CreateQuest(string questName, string description)
         {
             DatabaseManager.CreateQuest(questName, description);
@@ -49,6 +49,7 @@ namespace QuestEditor
             DatabaseManager.EditDetail(questID, detailID, activeEntity, action, amount, timer, passiveEntity);
         }
 
+        //GRID VIEWS
         void PopulateQuestTable()
         {
             var data = DatabaseManager.GetQuestList();
@@ -265,17 +266,16 @@ namespace QuestEditor
             PopulateDetailsTable(GetStepID());
         }
 
+        //QUEST BUILDING
         private void buildAllToolStripMenuItem_Click(object sender, EventArgs e)
         {
             QuestBuilder.BuildAllQuests();
         }
-
         private void buildSelectedQuestToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var questID = GetQuestID();
             if (questID != -1) QuestBuilder.BuildSpecificQuest(questID);
         }
-
         private void buildOutOfDateQuestsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             QuestBuilder.BuildOutOfDateQuests();
