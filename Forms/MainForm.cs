@@ -110,6 +110,7 @@ namespace QuestEditor
 
             return index;
         }
+
         //ADD
         private void button_AddQuest_Click(object sender, EventArgs e)
         {
@@ -223,15 +224,27 @@ namespace QuestEditor
         //DELETE
         private void button_DeleteQuest_Click(object sender, EventArgs e)
         {
-            DeleteQuest(GetQuestID());
+            var confirmResult = MessageBox.Show("Are you sure to delete this quest?\r\nQuest ID: " + GetQuestID().ToString(), "Confirm Quest Deletion", MessageBoxButtons.YesNo);
+            if (confirmResult == DialogResult.Yes)
+            {
+                DeleteQuest(GetQuestID());
+            }
         }
         private void button_DeleteStep_Click(object sender, EventArgs e)
         {
-            DeleteStep(GetStepID());
+            var confirmResult = MessageBox.Show("Are you sure to delete this step?\r\nStep ID: " + GetStepID().ToString(), "Confirm Step Deletion", MessageBoxButtons.YesNo);
+            if (confirmResult == DialogResult.Yes)
+            {
+                DeleteStep(GetStepID());
+            }
         }
         private void button_DeleteDetail_Click(object sender, EventArgs e)
         {
-            DeleteDetail(GetDetailID());
+            var confirmResult = MessageBox.Show("Are you sure to delete this detail?\r\nDetail ID: " + GetDetailID().ToString(), "Confirm Detail Deletion", MessageBoxButtons.YesNo);
+            if (confirmResult == DialogResult.Yes)
+            {
+                DeleteDetail(GetDetailID());
+            }
         }
         void DeleteQuest(int questID)
         {
