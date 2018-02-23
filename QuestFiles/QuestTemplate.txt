@@ -5,12 +5,14 @@ namespace ParallelZodiac
         public [[QUESTCLASS]]()
         {
             QuestID          = [[QUESTID]];
+			StepKey          = QuestID.ToString() + StepKey;
             QuestName        = "[[QUESTNAME]]";
             QuestDescription = "[[QUESTDESCRIPTION]]";
             Version          = "[[QUESTVERSION]]";
-            CurrentStep      = CreateFirstStep();
+            CurrentStepID    = GetInt(StepKey, 0);
             Steps.Add(CurrentStep);
 
+			CreateFirstStep();
             CreateSteps();
             CreateDetails();
         }
@@ -33,10 +35,11 @@ namespace ParallelZodiac
 
             return step;
         }
-        Step CreateStep(int id, int questID, string name, string dialogue, string exDialogue, bool useGeneric, bool useTyped, string reward, string rewardAmount, int attempts)
+        Step CreateStep(int id, int questID, string name, string dialogue, string exDialogue, bool useGeneric, bool useTyped, string reward, string rewardAmount, int attempts, int attemptsCompleted)
         {
             Step step = new Step();
             step.ID = id;
+			step.AttemptsKey = id.ToString() + step.AttemptsKey;
             step.QuestID = questID;
             step.StepName = name;
             step.Dialogue = dialogue;
@@ -44,9 +47,9 @@ namespace ParallelZodiac
             step.UseGeneric = useGeneric;
             step.UseTyped = useTyped;
 			step.AmountOfAttempts = attempts;
-			step.AttemptsCompleted = 0;
+			step.AttemptsCompleted = GetInt(step.AttemptsKey, attemptsCompleted);
 			
-			if(!reward.Contains('|')
+			if(!reward.Contains('|'))
 			{
 				step.Reward.Add(GameObject.Find(reward), rewardAmount);
 			}
@@ -68,6 +71,7 @@ namespace ParallelZodiac
             //TODO: If entity is Player, do I need to do a find by tag?
             Detail detail = new Detail();
             detail.ID = id;
+			detail.StateKey = id.ToString() + detail.StateKey;
             detail.StepID = stepID;
             detail.ActiveEntity = GameObject.Find(activeEntity); //Find by tag instead?
             detail.Action = action;

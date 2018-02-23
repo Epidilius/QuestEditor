@@ -140,18 +140,19 @@ namespace QuestEditor
             if (stepData.Rows.Count < 1)
                 return String.Empty;
 
-            var questID      = stepData.Rows[0]["QuestID"].ToString();
-            var name         = stepData.Rows[0]["StepName"].ToString();
-            var dialogue     = stepData.Rows[0]["Dialogue"].ToString().Replace("\n", "\\r\\n");
-            var exDialogue   = stepData.Rows[0]["ExceptionDialogue"].ToString().Replace("\n", "\\r\\n");
-            var useGeneric   = stepData.Rows[0]["UseGenericExceptionDialogue"].ToString();
-            var useTyped     = stepData.Rows[0]["UseTypedExceptionDialogue"].ToString();
-            var reward       = stepData.Rows[0]["Reward"].ToString();
-            var rewardAmount = stepData.Rows[0]["RewardAmount"].ToString();
-            var attempts     = stepData.Rows[0]["AmountOfAttempts"].ToString();
+            var questID           = stepData.Rows[0]["QuestID"].ToString();
+            var name              = stepData.Rows[0]["StepName"].ToString();
+            var dialogue          = stepData.Rows[0]["Dialogue"].ToString().Replace("\n", "\\r\\n");
+            var exDialogue        = stepData.Rows[0]["ExceptionDialogue"].ToString().Replace("\n", "\\r\\n");
+            var useGeneric        = stepData.Rows[0]["UseGenericExceptionDialogue"].ToString();
+            var useTyped          = stepData.Rows[0]["UseTypedExceptionDialogue"].ToString();
+            var reward            = stepData.Rows[0]["Reward"].ToString();
+            var rewardAmount      = stepData.Rows[0]["RewardAmount"].ToString();
+            var attempts          = stepData.Rows[0]["AmountOfAttempts"].ToString();
+            var attemptsCompleted = stepData.Rows[0]["AttemptsCompleted"].ToString();
 
             //Steps.Add(CreateStep(1, QuestID, "Reach the top of the castle", "kjfhdg...", "", false, false, Gold, 3000));
-            var creationString = "Steps.Add(CreateStep(STEPID, QUESTID, \"NAME\", \"DIALOGUE\", \"EXCEPTION\", USEGENERIC, USETYPED, \"REWARD\", \"AMOUNT\", ATTEMPTS));";
+            var creationString = "Steps.Add(CreateStep(STEPID, QUESTID, \"NAME\", \"DIALOGUE\", \"EXCEPTION\", USEGENERIC, USETYPED, \"REWARD\", \"AMOUNT\", ATTEMPTS, COMPLETED));";
 
             creationString = creationString.Replace("STEPID", stepID.ToString());
             creationString = creationString.Replace("QUESTID", questID);
@@ -163,6 +164,7 @@ namespace QuestEditor
             creationString = creationString.Replace("REWARD", reward);
             creationString = creationString.Replace("AMOUNT", rewardAmount);
             creationString = creationString.Replace("ATTEMPTS", attempts);
+            creationString = creationString.Replace("COMPLETED", attemptsCompleted);
 
             questTemplate = questTemplate.Replace("[[STEPCREATION]]", "\t\t\t" + creationString + "\r\n[[STEPCREATION]]");
             return questTemplate;

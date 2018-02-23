@@ -4,6 +4,7 @@ namespace ParallelZodiac
 {
     public class Step
     {
+		public string AttemptsKey = "_ATTEMPTS_COMPLETED"";
         public int ID;
         public int QuestID;
         public string StepName;
@@ -25,6 +26,7 @@ namespace ParallelZodiac
         public void StartStep()
         {
             //TODO: Update journal
+			PlayerPrefs.SetInt(AttemptsKey, AttemptsCompleted);
         }
 
         public void CompleteStep()

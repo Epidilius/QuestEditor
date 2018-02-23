@@ -1,0 +1,101 @@
+namespace ParallelZodiac
+{
+    class RescueThePrincess : Quest
+    {
+        public RescueThePrincess()
+        {
+            QuestID          = 1;
+            QuestName        = "Rescue The Princess";
+            QuestDescription = "We need a hero";
+            Version          = "4.9.4";
+            CurrentStep      = CreateFirstStep();
+            Steps.Add(CurrentStep);
+
+            CreateSteps();
+            CreateDetails();
+        }
+
+        void CreateSteps()
+        {
+			Steps.Add(CreateStep(1, 1, "Reach the top of the castle", "fdhjg\r\n\r\n\r\nasd\r\nfasdf\r\nasdf\r\nas\r\ndfa\r\nf\r\nasdf\r\n\r\nsdf\r\nasdf\r\nas\r\ndf", "", False, False, "gold|shield", "3000|1", -1));
+			Steps.Add(CreateStep(2, 1, "Protect Doug", "Follow me to the castle", "", False, False, "Sword", "1", 1));
+			Steps.Add(CreateStep(3, 1, "Talk to Doug", "Thats the castle where the princess at", "", False, False, "", "0", -1));
+			Steps.Add(CreateStep(4, 1, "Reach the top of the castle", "", "", False, False, "", "0", -1));
+			Steps.Add(CreateStep(5, 1, "Kill the final boss", "", "", False, False, "Boss Sword", "1", -1));
+			Steps.Add(CreateStep(6, 1, "Get a kiss from the princess", "", "", False, False, "Princess's Blessing", "1", -1));
+			Steps.Add(CreateStep(7, 1, "Go back to town with the princess", "", "", False, False, "", "0", -1));
+			Steps.Add(CreateStep(8, 1, "Defeat the princess", "", "", False, False, "", "0", -1));
+			Steps.Add(CreateStep(9, 1, "Go back to town with the princess", "", "", False, False, "", "0", -1));
+        }
+        public void CreateDetails()
+        {
+			Steps[1].Details.Add(CreateDetail(1002, 1, "Player", 5, -1, -1, "Doug"));
+			Steps[2].Details.Add(CreateDetail(1003, 2, "Doug", 1, -1, 100, "Castle"));
+			Steps[2].Details.Add(CreateDetail(1004, 2, "Player", 3, -1, -1, "Doug"));
+			Steps[3].Details.Add(CreateDetail(1005, 3, "Player", 5, -1, -1, "Doug"));
+			Steps[4].Details.Add(CreateDetail(1006, 4, "Player", 1, -1, -1, "TopofCastle"));
+			Steps[4].Details.Add(CreateDetail(1014, 4, "sdf", 1, -1, -1, "sdf"));
+			Steps[5].Details.Add(CreateDetail(1007, 5, "Player", 0, -1, 5, "Boss"));
+			Steps[6].Details.Add(CreateDetail(1008, 6, "Player", 5, -1, -1, "Princess"));
+			Steps[7].Details.Add(CreateDetail(1009, 7, "Princess", 1, -1, -1, "Castleexit"));
+			Steps[7].Details.Add(CreateDetail(1010, 7, "Player", 3, -1, -1, "Princess"));
+			Steps[8].Details.Add(CreateDetail(1011, 8, "Player", 0, -1, 6, "Princess"));
+			Steps[9].Details.Add(CreateDetail(1012, 9, "Player", 3, -1, -1, "Princess"));
+			Steps[9].Details.Add(CreateDetail(1013, 9, "Princess", 1, -1, -1, "Town"));
+        }
+
+        Step CreateFirstStep()
+        {
+            Step step = new Step();
+            step.ID = 0;
+            step.QuestID = QuestID;
+            step.StepName = "Quest Locked";
+
+            return step;
+        }
+        Step CreateStep(int id, int questID, string name, string dialogue, string exDialogue, bool useGeneric, bool useTyped, string reward, string rewardAmount, int attempts)
+        {
+            Step step = new Step();
+            step.ID = id;
+            step.QuestID = questID;
+            step.StepName = name;
+            step.Dialogue = dialogue;
+            step.ExceptionDialogue = exDialogue;
+            step.UseGeneric = useGeneric;
+            step.UseTyped = useTyped;
+			step.AmountOfAttempts = attempts;
+			step.AttemptsCompleted = 0;
+
+            if (!reward.Contains('|'))
+			{
+				step.Reward.Add(GameObject.Find(reward), rewardAmount);
+			}
+			else
+			{
+				var splitReward = reward.Split('|');
+				var splitAmount = rewardAmount.Split('|');
+
+				for(int i = 0; i < splitReward.Count(); i++)
+				{
+					step.Reward.Add(GameObject.Find(splitReward[i]), Convert.ToInt32(splitAmount[i]));
+				}
+			}
+
+            return step;
+        }
+        Detail CreateDetail(int id, int stepID, string activeEntity, int action, int amount, float timerLength, /*DateTime dateLimit,*/ string passiveEntity)
+        {
+            //TODO: If entity is Player, do I need to do a find by tag?
+            Detail detail = new Detail();
+            detail.ID = id;
+            detail.StepID = stepID;
+            detail.ActiveEntity = GameObject.Find(activeEntity); //Find by tag instead?
+            detail.Action = action;
+            detail.Amount = amount;
+            detail.TimerLength = timerLength;
+            detail.PassiveEntity = GameObject.Find(passiveEntity);
+            detail.SetupDetail();
+            return detail;
+        }
+    }
+}

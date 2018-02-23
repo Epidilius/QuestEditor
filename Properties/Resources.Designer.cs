@@ -65,6 +65,7 @@ namespace QuestEditor.Properties {
         ///{
         ///    public class Detail
         ///    {
+        ///		//TODO: Update state in DB
         ///        public enum DetailState
         ///        {
         ///            //Locked = 0,
@@ -81,40 +82,11 @@ namespace QuestEditor.Properties {
         ///        public float TimerLength;
         ///        public DetailState State;
         ///
-        ///        Timer DetailTimer;
-        ///      [rest of string was truncated]&quot;;.
+        ///    [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Detail {
             get {
                 return ResourceManager.GetString("Detail", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to namespace ParallelZodiac
-        ///{
-        ///    class RescueThePrincess : Quest
-        ///    {
-        ///        public RescueThePrincess()
-        ///        {
-        ///            QuestID = 1;
-        ///            QuestName = &quot;Rescue The Princess&quot;;
-        ///            QuestDescription = &quot;We need a hero&quot;;
-        ///            CurrentStep = CreateFirstStep();
-        ///            Version = &quot;4.9.4&quot;;
-        ///            Steps.Add(CurrentStep);
-        ///
-        ///            CreateSteps();
-        ///            CreateDetails();
-        ///        }
-        ///
-        ///        void CreateSteps()
-        ///        {
-        ///            Steps.Add(CreateStep(1, Quest [rest of string was truncated]&quot;;.
-        /// </summary>
-        internal static string ExampleQuest {
-            get {
-                return ResourceManager.GetString("ExampleQuest", resourceCulture);
             }
         }
         
@@ -126,7 +98,6 @@ namespace QuestEditor.Properties {
         ///    public class Quest
         ///    {
         ///        protected List&lt;Step&gt; Steps;
-        ///        public GameObject Player;
         ///        public int QuestID;
         ///        public string QuestName;
         ///        public string QuestDescription;
@@ -141,7 +112,9 @@ namespace QuestEditor.Properties {
         ///        public void FailQuest()
         ///        {
         ///            //TODO: Display failure for all to see
-        ///    [rest of string was truncated]&quot;;.
+        ///        }
+        ///
+        ///        void ProgressStep [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Quest {
             get {
@@ -157,9 +130,9 @@ namespace QuestEditor.Properties {
         ///        public [[QUESTCLASS]]()
         ///        {
         ///            QuestID          = [[QUESTID]];
-        ///            QuestName        = [[QUESTNAME]];
-        ///            QuestDescription = [[QUESTDESCRIPTION]];
-        ///            Version          = [[QUESTVERSION]];
+        ///            QuestName        = &quot;[[QUESTNAME]]&quot;;
+        ///            QuestDescription = &quot;[[QUESTDESCRIPTION]]&quot;;
+        ///            Version          = &quot;[[QUESTVERSION]]&quot;;
         ///            CurrentStep      = CreateFirstStep();
         ///            Steps.Add(CurrentStep);
         ///
@@ -168,8 +141,7 @@ namespace QuestEditor.Properties {
         ///        }
         ///
         ///        void CreateSteps()
-        ///        {
-        ///   [rest of string was truncated]&quot;;.
+        ///        [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string QuestTemplate {
             get {
@@ -193,10 +165,11 @@ namespace QuestEditor.Properties {
         ///        public bool UseTyped;
         ///        public Dictionary&lt;GameObject, int&gt; Reward;
         ///        public List&lt;Detail&gt; Details;
-        ///        public int AmountOfAttempts = -1;
-        ///        int AttempsCompleted = 0;
+        ///        public int AmountOfAttempts;
+        ///        int AttempsCompleted;
         ///
-        ///        public Step() [rest of string was truncated]&quot;;.
+        ///        public Step()
+        ///        [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Step {
             get {

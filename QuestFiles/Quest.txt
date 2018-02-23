@@ -4,11 +4,12 @@ namespace ParallelZodiac
 {
     public class Quest
     {
+		protected string StepKey = "_CURRENT_STEP";
         protected List<Step> Steps;
         public int QuestID;
         public string QuestName;
         public string QuestDescription;
-        public Step CurrentStep;
+        public int CurrentStepID;
         public string Version;
 
         public Quest()
@@ -24,7 +25,7 @@ namespace ParallelZodiac
         void ProgressStep()
         {
             //TODO: Display dialogue 
-            CurrentStep.CompleteStep();
+            Steps.ElementAt(CurrentStepID).CompleteStep();
             NextStep();
         }
 
@@ -32,18 +33,17 @@ namespace ParallelZodiac
         {
             for (int i = 0; i < Steps.Count(); i++)
             {
-                if (Steps[i] == CurrentStep)
+                if (Steps[i].ID == CurrentStepID)
                 {
-                    CurrentStep = Steps[i + 1];
-                    if (CurrentStep == Steps.Last())
+                    CurrentStepID = i + 1;
+                    if (CurrentStepID == Steps.Count() - 1)
                     {
-						//TODO: Update DB to say "Complete"
                         CompleteQuest();
                     }
                     else
                     {
-						//TODO: Update DB with new current step
-                        CurrentStep.StartStep();
+						PlayerPrefs.SetInt(StepKey, CurrentStepID);
+                        Steps.ElementAt(CurrentStepID).StartStep();
                     }
                     break;
                 }
@@ -52,7 +52,7 @@ namespace ParallelZodiac
 
         void CompleteQuest()
         {
-
+			PlayerPrefs.SetInt(StepKey, -1);
         }
     }
 }

@@ -2,7 +2,6 @@ namespace ParallelZodiac
 {
     public class Detail
     {
-		//TODO: Update state in DB
         public enum DetailState
         {
             //Locked = 0,
@@ -10,6 +9,7 @@ namespace ParallelZodiac
             Completed,
             Failed
         }
+		public string StateKey = "_STATE";
         public int ID;
         public int StepID;
         public GameObject ActiveEntity;
@@ -32,7 +32,8 @@ namespace ParallelZodiac
         {
             AmountCompleted = 0;
             PassiveEntity.AddObserver(Action, DetailProgressed);
-            State = DetailState.InProgress;
+            State = (DetailState)PlayerPrefs.GetInt(StateKey, 0);
+			PlayerPrefs.SetInt(StateKey, (int)State);
 
             if (TimerLength != -1)
                 CreateTimer();
@@ -55,6 +56,7 @@ namespace ParallelZodiac
             {
                 Script parentScript = this.transform.parent.GetComponent<Script>();
                 State = DetailState.Completed;
+			PlayerPrefs.SetInt(StateKey, (int)State);
                 DetailTimer.Stop();
                 parentScript.DetailComplete(ID, StepID);
             }
@@ -63,6 +65,7 @@ namespace ParallelZodiac
         public void TimerComplete()
         {
             State = DetailState.Failed;
+			PlayerPrefs.SetInt(StateKey, (int)State);
 
             Script parentScript = this.transform.parent.GetComponent<Script>();
             parentScript.DetailFailed(ID, StepID);
