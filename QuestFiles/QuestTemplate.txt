@@ -33,7 +33,7 @@ namespace ParallelZodiac
 
             return step;
         }
-        Step CreateStep(int id, int questID, string name, string dialogue, string exDialogue, bool useGeneric, bool useTyped, string reward, int rewardAmount)
+        Step CreateStep(int id, int questID, string name, string dialogue, string exDialogue, bool useGeneric, bool useTyped, string reward, string rewardAmount, int attempts)
         {
             Step step = new Step();
             step.ID = id;
@@ -43,8 +43,24 @@ namespace ParallelZodiac
             step.ExceptionDialogue = exDialogue;
             step.UseGeneric = useGeneric;
             step.UseTyped = useTyped;
-            step.Reward = GameObject.Find(reward);
-            step.RewardAmount = rewardAmount;
+			step.AmountOfAttempts = attempts;
+			step.AttemptsCompleted = 0;
+			
+			if(!reward.Contains('|')
+			{
+				step.Reward.Add(GameObject.Find(reward), rewardAmount);
+			}
+			else
+			{
+				var splitReward = reward.Split('|');
+				var splitAmount = rewardAmount.Split('|');
+
+				for(int i = 0; i < splitReward.Count(); i++)
+				{
+					step.Reward.Add(GameObject.Find(splitReward[i]), Convert.ToInt32(splitAmount[i]));
+				}
+			}
+
             return step;
         }
         Detail CreateDetail(int id, int stepID, string activeEntity, int action, int amount, float timerLength, /*DateTime dateLimit,*/ string passiveEntity)

@@ -5,7 +5,6 @@ using System.Linq;
 using System.Reflection;
 using System.Text.RegularExpressions;
 
-//TODO: Add a State status to all three tables. Also add all the vars from my Quest example to the DB
 namespace QuestEditor
 {
     public static class QuestBuilder
@@ -149,9 +148,10 @@ namespace QuestEditor
             var useTyped     = stepData.Rows[0]["UseTypedExceptionDialogue"].ToString();
             var reward       = stepData.Rows[0]["Reward"].ToString();
             var rewardAmount = stepData.Rows[0]["RewardAmount"].ToString();
+            var attempts     = stepData.Rows[0]["AmountOfAttempts"].ToString();
 
             //Steps.Add(CreateStep(1, QuestID, "Reach the top of the castle", "kjfhdg...", "", false, false, Gold, 3000));
-            var creationString = "Steps.Add(CreateStep(STEPID, QUESTID, \"NAME\", \"DIALOGUE\", \"EXCEPTION\", USEGENERIC, USETYPED, REWARD, AMOUNT));";
+            var creationString = "Steps.Add(CreateStep(STEPID, QUESTID, \"NAME\", \"DIALOGUE\", \"EXCEPTION\", USEGENERIC, USETYPED, \"REWARD\", \"AMOUNT\", ATTEMPTS));";
 
             creationString = creationString.Replace("STEPID", stepID.ToString());
             creationString = creationString.Replace("QUESTID", questID);
@@ -162,6 +162,7 @@ namespace QuestEditor
             creationString = creationString.Replace("USETYPED", useTyped);
             creationString = creationString.Replace("REWARD", reward);
             creationString = creationString.Replace("AMOUNT", rewardAmount);
+            creationString = creationString.Replace("ATTEMPTS", attempts);
 
             questTemplate = questTemplate.Replace("[[STEPCREATION]]", "\t\t\t" + creationString + "\r\n[[STEPCREATION]]");
             return questTemplate;

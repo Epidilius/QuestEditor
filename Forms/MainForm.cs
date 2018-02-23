@@ -30,14 +30,14 @@ namespace QuestEditor
             DatabaseManager.EditQuest(questID, newQuestName, newDescription);
             PopulateQuestTable();
         }
-        private void CreateStep(int questID, string stepName, string dialogue, string exDialolgue, int useGeneric, int useTyped, string reward, int rewardAmount)
+        private void CreateStep(int questID, string stepName, string dialogue, string exDialolgue, int useGeneric, int useTyped, Dictionary<string, string> reward, int amountOfAttempts)
         {
-            DatabaseManager.CreateStep(questID, stepName, dialogue, exDialolgue, useGeneric, useTyped, reward, rewardAmount);
+            DatabaseManager.CreateStep(questID, stepName, dialogue, exDialolgue, useGeneric, useTyped, reward, amountOfAttempts);
             PopulateStepsTable(questID);
         }
-        private void EditStep(int questID, int stepID, string newStepName, string dialogue, string exDialolgue, int useGeneric, int useTyped, string reward, int rewardAmount) 
+        private void EditStep(int questID, int stepID, string newStepName, string dialogue, string exDialolgue, int useGeneric, int useTyped, Dictionary<string, string> reward, int amountOfAttempts) 
         {
-            DatabaseManager.EditStep(questID, stepID, newStepName, dialogue, exDialolgue, useGeneric, useTyped, reward, rewardAmount);
+            DatabaseManager.EditStep(questID, stepID, newStepName, dialogue, exDialolgue, useGeneric, useTyped, reward, amountOfAttempts);
         }
         private void CreateDetail(int stepID, string activeEntity, int action, int amount, int timer, string passiveEntity)
         {
@@ -123,7 +123,7 @@ namespace QuestEditor
         {
             StepForm stepForm = new StepForm();
             if (stepForm.ShowDialog() == DialogResult.OK)
-                CreateStep(GetQuestID(), stepForm.StepName, stepForm.Dialogue, stepForm.ExceptionDialogue, stepForm.GenericExDialogue, stepForm.TypedExDialogue, stepForm.Reward, stepForm.RewardAmount);
+                CreateStep(GetQuestID(), stepForm.StepName, stepForm.Dialogue, stepForm.ExceptionDialogue, stepForm.GenericExDialogue, stepForm.TypedExDialogue, stepForm.GetReward(), stepForm.AmountOfAttempts);
         }
         private void button_AddDetails_Click(object sender, EventArgs e)
         {
@@ -179,8 +179,8 @@ namespace QuestEditor
 
             var dialogue     = Convert.ToString(results["Dialogue"]);
             var exDialogue   = Convert.ToString(results["ExceptionDialogue"]);
-            var reward       = Convert.ToString(results["Reward"]);
-            var rewardAmount = Convert.ToString(results["RewardAmount"]);
+            var reward       = Convert.ToString(results["Reward"]).Split('|');
+            var rewardAmount = Convert.ToString(results["RewardAmount"]).Split('|');
 
             var useGenerics  = Convert.ToBoolean(results["UseGenericExceptionDialogue"]);
             var useTyped     = Convert.ToBoolean(results["UseTypedExceptionDialogue"]);
@@ -188,7 +188,7 @@ namespace QuestEditor
             StepForm stepForm = new StepForm(stepName, dialogue, exDialogue, useGenerics, useTyped, reward, rewardAmount);
             if (stepForm.ShowDialog() == DialogResult.OK)
             {
-                EditStep(GetQuestID(), stepID, stepForm.StepName, stepForm.Dialogue, stepForm.ExceptionDialogue, stepForm.GenericExDialogue, stepForm.TypedExDialogue, stepForm.Reward, stepForm.RewardAmount);
+                EditStep(GetQuestID(), stepID, stepForm.StepName, stepForm.Dialogue, stepForm.ExceptionDialogue, stepForm.GenericExDialogue, stepForm.TypedExDialogue, stepForm.GetReward(), stepForm.AmountOfAttempts);
             }
 
             PopulateStepsTable(GetQuestID());

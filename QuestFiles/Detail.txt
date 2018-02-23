@@ -2,6 +2,7 @@ namespace ParallelZodiac
 {
     public class Detail
     {
+		//TODO: Update state in DB
         public enum DetailState
         {
             //Locked = 0,

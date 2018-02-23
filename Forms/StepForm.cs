@@ -18,7 +18,7 @@ namespace QuestEditor
             InitializeComponent();
         }
         
-        public StepForm(string stepName, string dialogue, string exDialogue, bool useGenerics, bool useTyped, string reward, string rewardAmount)
+        public StepForm(string stepName, string dialogue, string exDialogue, bool useGenerics, bool useTyped, string[] reward, string[] rewardAmount)
         {
             InitializeComponent();
 
@@ -27,8 +27,11 @@ namespace QuestEditor
             richTextBox_ExceptionDialogue.Text = exDialogue;
             checkBox_GenericExDialogue.Checked = useGenerics;
             checkBox_TypedExDialogue.Checked = useTyped;
-            textBox_Reward.Text = reward;
-            textBox_RewardAmount.Text = rewardAmount;
+
+            for(int i = 0; i < reward.Length; i++)
+            {
+                dataGridView_RewardData.Rows.Add(reward[i], rewardAmount[i]);
+            }
 
             button_CreateStep.Text = "Edit Step";
         }        
@@ -53,10 +56,21 @@ namespace QuestEditor
         public string ExceptionDialogue { get { return richTextBox_ExceptionDialogue.Text; } }
         public int GenericExDialogue { get { return (checkBox_GenericExDialogue.Checked ? 1 : 0); } }
         public int TypedExDialogue { get { return (checkBox_TypedExDialogue.Checked ? 1 : 0); } }
+        public int AmountOfAttempts {  get { return (String.IsNullOrWhiteSpace(textBox_AmountOfAttempts.Text) ? -1 : Convert.ToInt32(textBox_AmountOfAttempts.Text)); } }
 
-        public string Reward { get { return textBox_Reward.Text; } }
-        public int RewardAmount { get {
-                return String.IsNullOrWhiteSpace(textBox_RewardAmount.Text) ? 0 : Int32.Parse(textBox_RewardAmount.Text);
-            } }
+        public Dictionary<string, string> GetReward()
+        {
+            var rewardData = new Dictionary<string, string>();
+
+            for(int i = 0; i < dataGridView_RewardData.Rows.Count; i++)
+            {
+                var row = dataGridView_RewardData.Rows[i];
+                var reward = row.Cells["Reward"].Value.ToString();
+                var amount = row.Cells["Amount"].Value.ToString();
+                rewardData.Add(reward, amount);
+            }
+
+            return rewardData;
+        } 
     }
 }

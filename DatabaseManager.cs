@@ -293,10 +293,23 @@ namespace QuestEditor
                 }
             }
         }
-        public static void CreateStep(int questID, string stepName, string dialogue, string exDialolgue, int useGeneric, int useTyped, string reward, int rewardAmount)
+        public static void CreateStep(int questID, string stepName, string dialogue, string exDialolgue, int useGeneric, int useTyped, Dictionary<string, string> rewardData, int amountOfAttempts)
         {
             var connString = ConfigurationManager.ConnectionStrings["QuestEditor.Properties.Settings.ParallelZodiacConnectionString"].ConnectionString;
-            var cmdString = "INSERT INTO Steps (QuestID, StepName, Dialogue, ExceptionDialogue, UseGenericExceptionDialogue, UseTypedExceptionDialogue, Reward, RewardAmount) VALUES (@val1, @val2, @val3, @val4, @val5, @val6, @val7, @val8)";
+            var cmdString = "INSERT INTO Steps (QuestID, StepName, Dialogue, ExceptionDialogue, UseGenericExceptionDialogue, UseTypedExceptionDialogue, Reward, RewardAmount, AmountOfAttempts) VALUES (@val1, @val2, @val3, @val4, @val5, @val6, @val7, @val8, @val9)";
+
+            var reward = "";
+            var amount = "";
+            foreach(var pair in rewardData)
+            {
+                if(reward != "")
+                {
+                    reward += "|";
+                    amount += "|";
+                }
+                reward += pair.Key;
+                amount += pair.Value;
+            }
 
             using (SqlConnection conn = new SqlConnection(connString))
             {
@@ -311,7 +324,8 @@ namespace QuestEditor
                     comm.Parameters.AddWithValue("@val5", useGeneric);
                     comm.Parameters.AddWithValue("@val6", useTyped);
                     comm.Parameters.AddWithValue("@val7", reward);
-                    comm.Parameters.AddWithValue("@val8", rewardAmount);
+                    comm.Parameters.AddWithValue("@val8", amount);
+                    comm.Parameters.AddWithValue("@val9", amountOfAttempts);
 
                     try
                     {
@@ -362,8 +376,21 @@ namespace QuestEditor
 
             RunQuery(setQuery);
         }
-        public static void EditStep(int questID, int stepID, string stepName, string dialogue, string exDialolgue, int useGeneric, int useTyped, string reward, int rewardAmount)
+        public static void EditStep(int questID, int stepID, string stepName, string dialogue, string exDialolgue, int useGeneric, int useTyped, Dictionary<string, string> rewardData, int amountOfAttempts)
         {
+            var reward = "";
+            var amount = "";
+            foreach (var pair in rewardData)
+            {
+                if (reward != "")
+                {
+                    reward += "|";
+                    amount += "|";
+                }
+                reward += pair.Key;
+                amount += pair.Value;
+            }
+
             UpdateVersion(questID, "step");
 
             var setQuery = "UPDATE Steps SET StepName = '" + stepName + "', " +
@@ -372,7 +399,8 @@ namespace QuestEditor
                 "UseGenericExceptionDialogue = '" + useGeneric + "', " +
                 "UseTypedExceptionDialogue = '" + useTyped + "', " +
                 "Reward = '" + reward + "', " +
-                "RewardAmount = '" + rewardAmount + "' " +
+                "RewardAmount = '" + amount + "' " +
+                "AmountOfAttempts = '" + amountOfAttempts + "' " +
                 "WHERE ID = '" + stepID + "'";
 
             RunQuery(setQuery);

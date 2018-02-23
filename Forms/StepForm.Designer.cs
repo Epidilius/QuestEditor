@@ -38,15 +38,17 @@
             this.label9 = new System.Windows.Forms.Label();
             this.richTextBox_Dialogue = new System.Windows.Forms.RichTextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox_RewardAmount = new System.Windows.Forms.TextBox();
-            this.textBox_Reward = new System.Windows.Forms.TextBox();
+            this.dataGridView_RewardData = new System.Windows.Forms.DataGridView();
+            this.Reward = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.textBox_AmountOfAttempts = new System.Windows.Forms.TextBox();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_RewardData)).BeginInit();
             this.SuspendLayout();
             // 
             // button_Cancel
             // 
-            this.button_Cancel.Location = new System.Drawing.Point(521, 380);
+            this.button_Cancel.Location = new System.Drawing.Point(901, 380);
             this.button_Cancel.Name = "button_Cancel";
             this.button_Cancel.Size = new System.Drawing.Size(100, 100);
             this.button_Cancel.TabIndex = 7;
@@ -56,7 +58,7 @@
             // 
             // button_CreateStep
             // 
-            this.button_CreateStep.Location = new System.Drawing.Point(521, 274);
+            this.button_CreateStep.Location = new System.Drawing.Point(795, 380);
             this.button_CreateStep.Name = "button_CreateStep";
             this.button_CreateStep.Size = new System.Drawing.Size(100, 100);
             this.button_CreateStep.TabIndex = 6;
@@ -75,7 +77,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 9);
+            this.label1.Location = new System.Drawing.Point(9, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(60, 13);
             this.label1.TabIndex = 4;
@@ -135,47 +137,51 @@
             this.label4.TabIndex = 26;
             this.label4.Text = "Dialogue";
             // 
-            // textBox_RewardAmount
+            // dataGridView_RewardData
             // 
-            this.textBox_RewardAmount.Location = new System.Drawing.Point(521, 248);
-            this.textBox_RewardAmount.Name = "textBox_RewardAmount";
-            this.textBox_RewardAmount.Size = new System.Drawing.Size(100, 20);
-            this.textBox_RewardAmount.TabIndex = 32;
+            this.dataGridView_RewardData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView_RewardData.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Reward,
+            this.Amount});
+            this.dataGridView_RewardData.Location = new System.Drawing.Point(521, 66);
+            this.dataGridView_RewardData.Name = "dataGridView_RewardData";
+            this.dataGridView_RewardData.Size = new System.Drawing.Size(480, 308);
+            this.dataGridView_RewardData.TabIndex = 36;
             // 
-            // textBox_Reward
+            // Reward
             // 
-            this.textBox_Reward.Location = new System.Drawing.Point(521, 209);
-            this.textBox_Reward.Name = "textBox_Reward";
-            this.textBox_Reward.Size = new System.Drawing.Size(100, 20);
-            this.textBox_Reward.TabIndex = 33;
+            this.Reward.HeaderText = "Reward";
+            this.Reward.Name = "Reward";
+            // 
+            // Amount
+            // 
+            this.Amount.HeaderText = "Amount";
+            this.Amount.Name = "Amount";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(518, 232);
+            this.label2.Location = new System.Drawing.Point(792, 12);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(83, 13);
-            this.label2.TabIndex = 34;
-            this.label2.Text = "Reward Amount";
+            this.label2.Size = new System.Drawing.Size(99, 13);
+            this.label2.TabIndex = 37;
+            this.label2.Text = "Amount of Attempts";
             // 
-            // label3
+            // textBox_AmountOfAttempts
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(518, 193);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(44, 13);
-            this.label3.TabIndex = 35;
-            this.label3.Text = "Reward";
+            this.textBox_AmountOfAttempts.Location = new System.Drawing.Point(795, 27);
+            this.textBox_AmountOfAttempts.Name = "textBox_AmountOfAttempts";
+            this.textBox_AmountOfAttempts.Size = new System.Drawing.Size(206, 20);
+            this.textBox_AmountOfAttempts.TabIndex = 38;
             // 
-            // Step
+            // StepForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(640, 492);
-            this.Controls.Add(this.label3);
+            this.ClientSize = new System.Drawing.Size(1013, 492);
+            this.Controls.Add(this.textBox_AmountOfAttempts);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox_Reward);
-            this.Controls.Add(this.textBox_RewardAmount);
+            this.Controls.Add(this.dataGridView_RewardData);
             this.Controls.Add(this.checkBox_TypedExDialogue);
             this.Controls.Add(this.checkBox_GenericExDialogue);
             this.Controls.Add(this.richTextBox_ExceptionDialogue);
@@ -188,6 +194,7 @@
             this.Controls.Add(this.label1);
             this.Name = "StepForm";
             this.Text = "StepForm";
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_RewardData)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -205,9 +212,10 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.RichTextBox richTextBox_Dialogue;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox_RewardAmount;
-        private System.Windows.Forms.TextBox textBox_Reward;
+        private System.Windows.Forms.DataGridView dataGridView_RewardData;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Reward;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Amount;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox textBox_AmountOfAttempts;
     }
 }

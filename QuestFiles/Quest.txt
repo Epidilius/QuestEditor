@@ -5,7 +5,6 @@ namespace ParallelZodiac
     public class Quest
     {
         protected List<Step> Steps;
-        public GameObject Player;
         public int QuestID;
         public string QuestName;
         public string QuestDescription;
@@ -38,10 +37,12 @@ namespace ParallelZodiac
                     CurrentStep = Steps[i + 1];
                     if (CurrentStep == Steps.Last())
                     {
+						//TODO: Update DB to say "Complete"
                         CompleteQuest();
                     }
                     else
                     {
+						//TODO: Update DB with new current step
                         CurrentStep.StartStep();
                     }
                     break;

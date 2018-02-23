@@ -13,8 +13,8 @@ namespace ParallelZodiac
         public bool UseTyped;
         public Dictionary<GameObject, int> Reward;
         public List<Detail> Details;
-        public int AmountOfAttempts = -1;
-        int AttempsCompleted = 0;
+        public int AmountOfAttempts;
+        int AttempsCompleted;
 
         public Step()
         {
