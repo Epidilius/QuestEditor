@@ -52,7 +52,7 @@ namespace QuestEditor
         //GRID VIEWS
         void PopulateQuestTable()
         {
-            var data = DatabaseManager.GetQuestList();
+            var data = DatabaseManager.GetAllQuestData();
             dataGridView_Quests.DataSource = data;
             //this.questsTableAdapter.Fill(this.parallelZodiacDataSet.Quests);
         }
@@ -179,13 +179,14 @@ namespace QuestEditor
 
             var dialogue     = Convert.ToString(results["Dialogue"]);
             var exDialogue   = Convert.ToString(results["ExceptionDialogue"]);
+            var attempts     = Convert.ToString(results["AmountOfAttempts"]);
             var reward       = Convert.ToString(results["Reward"]).Split('|');
             var rewardAmount = Convert.ToString(results["RewardAmount"]).Split('|');
 
             var useGenerics  = Convert.ToBoolean(results["UseGenericExceptionDialogue"]);
             var useTyped     = Convert.ToBoolean(results["UseTypedExceptionDialogue"]);
 
-            StepForm stepForm = new StepForm(stepName, dialogue, exDialogue, useGenerics, useTyped, reward, rewardAmount);
+            StepForm stepForm = new StepForm(stepName, dialogue, exDialogue, useGenerics, useTyped, reward, rewardAmount, attempts);
             if (stepForm.ShowDialog() == DialogResult.OK)
             {
                 EditStep(GetQuestID(), stepID, stepForm.StepName, stepForm.Dialogue, stepForm.ExceptionDialogue, stepForm.GenericExDialogue, stepForm.TypedExDialogue, stepForm.GetReward(), stepForm.AmountOfAttempts);
@@ -276,7 +277,7 @@ namespace QuestEditor
             var questID = GetQuestID();
             if (questID != -1) QuestBuilder.BuildSpecificQuest(questID);
         }
-        private void buildOutOfDateQuestsToolStripMenuItem_Click(object sender, EventArgs e)
+        private void buildOutOfDateToolStripMenuItem_Click(object sender, EventArgs e)
         {
             QuestBuilder.BuildOutOfDateQuests();
         }

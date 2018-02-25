@@ -12,13 +12,12 @@ namespace QuestEditor
 {
     public partial class StepForm : Form
     {
-        //TODO: Change the reward stuff to a grid view. One column for item, one for amount 
         public StepForm()
         {
             InitializeComponent();
         }
         
-        public StepForm(string stepName, string dialogue, string exDialogue, bool useGenerics, bool useTyped, string[] reward, string[] rewardAmount)
+        public StepForm(string stepName, string dialogue, string exDialogue, bool useGenerics, bool useTyped, string[] reward, string[] rewardAmount, string amountOfAttempts)
         {
             InitializeComponent();
 
@@ -27,6 +26,7 @@ namespace QuestEditor
             richTextBox_ExceptionDialogue.Text = exDialogue;
             checkBox_GenericExDialogue.Checked = useGenerics;
             checkBox_TypedExDialogue.Checked = useTyped;
+            textBox_AmountOfAttempts.Text = amountOfAttempts;
 
             for(int i = 0; i < reward.Length; i++)
             {
@@ -62,11 +62,11 @@ namespace QuestEditor
         {
             var rewardData = new Dictionary<string, string>();
 
-            for(int i = 0; i < dataGridView_RewardData.Rows.Count; i++)
+            for(int i = 0; i < dataGridView_RewardData.Rows.Count - 1; i++)
             {
                 var row = dataGridView_RewardData.Rows[i];
-                var reward = row.Cells["Reward"].Value.ToString();
-                var amount = row.Cells["Amount"].Value.ToString();
+                var reward = Convert.ToString(row.Cells["Reward"].Value);
+                var amount = Convert.ToString(row.Cells["Amount"].Value);
                 rewardData.Add(reward, amount);
             }
 

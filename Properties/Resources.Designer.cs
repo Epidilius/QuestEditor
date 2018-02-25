@@ -65,7 +65,6 @@ namespace QuestEditor.Properties {
         ///{
         ///    public class Detail
         ///    {
-        ///		//TODO: Update state in DB
         ///        public enum DetailState
         ///        {
         ///            //Locked = 0,
@@ -73,6 +72,7 @@ namespace QuestEditor.Properties {
         ///            Completed,
         ///            Failed
         ///        }
+        ///		public string StateKey = &quot;_STATE&quot;;
         ///        public int ID;
         ///        public int StepID;
         ///        public GameObject ActiveEntity;
@@ -80,9 +80,7 @@ namespace QuestEditor.Properties {
         ///        public int Action;
         ///        public int Amount;
         ///        public float TimerLength;
-        ///        public DetailState State;
-        ///
-        ///    [rest of string was truncated]&quot;;.
+        ///        public DetailState State [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Detail {
             get {
@@ -97,11 +95,12 @@ namespace QuestEditor.Properties {
         ///{
         ///    public class Quest
         ///    {
+        ///		protected string StepKey = &quot;_CURRENT_STEP&quot;;
         ///        protected List&lt;Step&gt; Steps;
         ///        public int QuestID;
         ///        public string QuestName;
         ///        public string QuestDescription;
-        ///        public Step CurrentStep;
+        ///        public int CurrentStepID;
         ///        public string Version;
         ///
         ///        public Quest()
@@ -111,10 +110,7 @@ namespace QuestEditor.Properties {
         ///
         ///        public void FailQuest()
         ///        {
-        ///            //TODO: Display failure for all to see
-        ///        }
-        ///
-        ///        void ProgressStep [rest of string was truncated]&quot;;.
+        ///            //TODO: Display failure for al [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Quest {
             get {
@@ -130,18 +126,16 @@ namespace QuestEditor.Properties {
         ///        public [[QUESTCLASS]]()
         ///        {
         ///            QuestID          = [[QUESTID]];
+        ///			StepKey          = QuestID.ToString() + StepKey;
         ///            QuestName        = &quot;[[QUESTNAME]]&quot;;
         ///            QuestDescription = &quot;[[QUESTDESCRIPTION]]&quot;;
         ///            Version          = &quot;[[QUESTVERSION]]&quot;;
-        ///            CurrentStep      = CreateFirstStep();
+        ///            CurrentStepID    = GetInt(StepKey, 0);
         ///            Steps.Add(CurrentStep);
         ///
+        ///			CreateFirstStep();
         ///            CreateSteps();
-        ///            CreateDetails();
-        ///        }
-        ///
-        ///        void CreateSteps()
-        ///        [rest of string was truncated]&quot;;.
+        ///  [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string QuestTemplate {
             get {
@@ -156,6 +150,7 @@ namespace QuestEditor.Properties {
         ///{
         ///    public class Step
         ///    {
+        ///		public string AttemptsKey = &quot;_ATTEMPTS_COMPLETED&quot;&quot;;
         ///        public int ID;
         ///        public int QuestID;
         ///        public string StepName;
@@ -166,10 +161,7 @@ namespace QuestEditor.Properties {
         ///        public Dictionary&lt;GameObject, int&gt; Reward;
         ///        public List&lt;Detail&gt; Details;
         ///        public int AmountOfAttempts;
-        ///        int AttempsCompleted;
-        ///
-        ///        public Step()
-        ///        [rest of string was truncated]&quot;;.
+        ///         [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Step {
             get {

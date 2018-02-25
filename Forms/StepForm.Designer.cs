@@ -48,6 +48,7 @@
             // 
             // button_Cancel
             // 
+            this.button_Cancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button_Cancel.Location = new System.Drawing.Point(901, 380);
             this.button_Cancel.Name = "button_Cancel";
             this.button_Cancel.Size = new System.Drawing.Size(100, 100);
@@ -58,6 +59,7 @@
             // 
             // button_CreateStep
             // 
+            this.button_CreateStep.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button_CreateStep.Location = new System.Drawing.Point(795, 380);
             this.button_CreateStep.Name = "button_CreateStep";
             this.button_CreateStep.Size = new System.Drawing.Size(100, 100);
@@ -105,16 +107,19 @@
             // 
             // richTextBox_ExceptionDialogue
             // 
+            this.richTextBox_ExceptionDialogue.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.richTextBox_ExceptionDialogue.Location = new System.Drawing.Point(12, 292);
             this.richTextBox_ExceptionDialogue.Name = "richTextBox_ExceptionDialogue";
-            this.richTextBox_ExceptionDialogue.Size = new System.Drawing.Size(500, 188);
+            this.richTextBox_ExceptionDialogue.Size = new System.Drawing.Size(503, 188);
             this.richTextBox_ExceptionDialogue.TabIndex = 29;
             this.richTextBox_ExceptionDialogue.Text = "";
             // 
             // label9
             // 
+            this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(9, 276);
+            this.label9.Location = new System.Drawing.Point(12, 276);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(99, 13);
             this.label9.TabIndex = 28;
@@ -122,9 +127,12 @@
             // 
             // richTextBox_Dialogue
             // 
+            this.richTextBox_Dialogue.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.richTextBox_Dialogue.Location = new System.Drawing.Point(12, 66);
             this.richTextBox_Dialogue.Name = "richTextBox_Dialogue";
-            this.richTextBox_Dialogue.Size = new System.Drawing.Size(500, 207);
+            this.richTextBox_Dialogue.Size = new System.Drawing.Size(503, 207);
             this.richTextBox_Dialogue.TabIndex = 27;
             this.richTextBox_Dialogue.Text = "";
             // 
@@ -139,6 +147,8 @@
             // 
             // dataGridView_RewardData
             // 
+            this.dataGridView_RewardData.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView_RewardData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView_RewardData.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Reward,
@@ -160,6 +170,7 @@
             // 
             // label2
             // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(792, 12);
             this.label2.Name = "label2";
@@ -169,6 +180,7 @@
             // 
             // textBox_AmountOfAttempts
             // 
+            this.textBox_AmountOfAttempts.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox_AmountOfAttempts.Location = new System.Drawing.Point(795, 27);
             this.textBox_AmountOfAttempts.Name = "textBox_AmountOfAttempts";
             this.textBox_AmountOfAttempts.Size = new System.Drawing.Size(206, 20);

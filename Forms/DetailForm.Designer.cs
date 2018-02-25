@@ -46,7 +46,7 @@
             // 
             // button_CreateDetail
             // 
-            this.button_CreateDetail.Location = new System.Drawing.Point(12, 57);
+            this.button_CreateDetail.Location = new System.Drawing.Point(12, 55);
             this.button_CreateDetail.Name = "button_CreateDetail";
             this.button_CreateDetail.Size = new System.Drawing.Size(95, 118);
             this.button_CreateDetail.TabIndex = 3;
@@ -56,6 +56,7 @@
             // 
             // button_Cancel
             // 
+            this.button_Cancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button_Cancel.Location = new System.Drawing.Point(506, 57);
             this.button_Cancel.Name = "button_Cancel";
             this.button_Cancel.Size = new System.Drawing.Size(100, 116);
@@ -66,9 +67,11 @@
             // 
             // comboBox_Action
             // 
+            this.comboBox_Action.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBox_Action.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox_Action.FormattingEnabled = true;
-            this.comboBox_Action.Location = new System.Drawing.Point(212, 30);
+            this.comboBox_Action.Location = new System.Drawing.Point(212, 24);
             this.comboBox_Action.Name = "comboBox_Action";
             this.comboBox_Action.Size = new System.Drawing.Size(194, 21);
             this.comboBox_Action.TabIndex = 5;
@@ -76,7 +79,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(9, 15);
+            this.label1.Location = new System.Drawing.Point(9, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(66, 13);
             this.label1.TabIndex = 7;
@@ -85,7 +88,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(209, 14);
+            this.label2.Location = new System.Drawing.Point(209, 8);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(37, 13);
             this.label2.TabIndex = 8;
@@ -93,14 +96,16 @@
             // 
             // textBox_ActiveEntity
             // 
-            this.textBox_ActiveEntity.Location = new System.Drawing.Point(12, 31);
+            this.textBox_ActiveEntity.Location = new System.Drawing.Point(12, 25);
             this.textBox_ActiveEntity.Name = "textBox_ActiveEntity";
             this.textBox_ActiveEntity.Size = new System.Drawing.Size(194, 20);
             this.textBox_ActiveEntity.TabIndex = 9;
             // 
             // textBox_Amount
             // 
-            this.textBox_Amount.Location = new System.Drawing.Point(212, 73);
+            this.textBox_Amount.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox_Amount.Location = new System.Drawing.Point(212, 75);
             this.textBox_Amount.Name = "textBox_Amount";
             this.textBox_Amount.Size = new System.Drawing.Size(194, 20);
             this.textBox_Amount.TabIndex = 27;
@@ -109,7 +114,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(209, 57);
+            this.label3.Location = new System.Drawing.Point(209, 59);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(43, 13);
             this.label3.TabIndex = 26;
@@ -117,7 +122,8 @@
             // 
             // textBox_PassiveEntity
             // 
-            this.textBox_PassiveEntity.Location = new System.Drawing.Point(412, 31);
+            this.textBox_PassiveEntity.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox_PassiveEntity.Location = new System.Drawing.Point(412, 25);
             this.textBox_PassiveEntity.Name = "textBox_PassiveEntity";
             this.textBox_PassiveEntity.Size = new System.Drawing.Size(194, 20);
             this.textBox_PassiveEntity.TabIndex = 29;
@@ -125,7 +131,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(409, 15);
+            this.label5.Location = new System.Drawing.Point(409, 9);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(73, 13);
             this.label5.TabIndex = 28;
@@ -133,7 +139,9 @@
             // 
             // textBox_Timer
             // 
-            this.textBox_Timer.Location = new System.Drawing.Point(212, 115);
+            this.textBox_Timer.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox_Timer.Location = new System.Drawing.Point(212, 114);
             this.textBox_Timer.Name = "textBox_Timer";
             this.textBox_Timer.Size = new System.Drawing.Size(194, 20);
             this.textBox_Timer.TabIndex = 36;
@@ -150,8 +158,10 @@
             // 
             // textBox_DateDoneBy
             // 
+            this.textBox_DateDoneBy.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox_DateDoneBy.Enabled = false;
-            this.textBox_DateDoneBy.Location = new System.Drawing.Point(212, 155);
+            this.textBox_DateDoneBy.Location = new System.Drawing.Point(212, 157);
             this.textBox_DateDoneBy.Name = "textBox_DateDoneBy";
             this.textBox_DateDoneBy.Size = new System.Drawing.Size(194, 20);
             this.textBox_DateDoneBy.TabIndex = 38;
@@ -160,13 +170,13 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(209, 138);
+            this.label4.Location = new System.Drawing.Point(209, 137);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(74, 13);
             this.label4.TabIndex = 37;
             this.label4.Text = "Time Done By";
             // 
-            // Detail
+            // DetailForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;

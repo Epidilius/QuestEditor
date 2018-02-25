@@ -139,6 +139,10 @@ namespace QuestEditor
         {
             return RunQuery("SELECT ID FROM Quests");
         }
+        public static DataTable GetAllQuestData()
+        {
+            return RunQuery("SELECT * FROM Quests");
+        }
         public static DataTable GetStepsForQuest(int questID)
         {
             return RunQuery("SELECT * FROM Steps WHERE QuestID LIKE '" + questID + "'");
@@ -272,6 +276,9 @@ namespace QuestEditor
             var connString = ConfigurationManager.ConnectionStrings["QuestEditor.Properties.Settings.ParallelZodiacConnectionString"].ConnectionString;
             var cmdString = "INSERT INTO Quests (Name, Description, Version) VALUES (@val1, @val2, @val3)";
 
+            description = description.Replace("\"", "'");
+            description = description.Replace("'", "''");
+
             using (SqlConnection conn = new SqlConnection(connString))
             {
                 using (SqlCommand comm = new SqlCommand())
@@ -297,6 +304,12 @@ namespace QuestEditor
         {
             var connString = ConfigurationManager.ConnectionStrings["QuestEditor.Properties.Settings.ParallelZodiacConnectionString"].ConnectionString;
             var cmdString = "INSERT INTO Steps (QuestID, StepName, Dialogue, ExceptionDialogue, UseGenericExceptionDialogue, UseTypedExceptionDialogue, Reward, RewardAmount, AmountOfAttempts) VALUES (@val1, @val2, @val3, @val4, @val5, @val6, @val7, @val8, @val9)";
+
+            dialogue = dialogue.Replace("\"", "'");
+            dialogue = dialogue.Replace("'", "''");
+
+            exDialolgue = exDialolgue.Replace("\"", "'");
+            exDialolgue = exDialolgue.Replace("'", "''");
 
             var reward = "";
             var amount = "";
@@ -372,12 +385,21 @@ namespace QuestEditor
         {
             UpdateVersion(questID, "quest");
 
+            description = description.Replace("\"", "'");
+            description = description.Replace("'", "''");
+
             var setQuery = "UPDATE Quests SET Name = '" + questName + "', Description = '" + description + "' WHERE ID = '" + questID + "'";
 
             RunQuery(setQuery);
         }
         public static void EditStep(int questID, int stepID, string stepName, string dialogue, string exDialolgue, int useGeneric, int useTyped, Dictionary<string, string> rewardData, int amountOfAttempts)
         {
+            dialogue = dialogue.Replace("\"", "'");
+            dialogue = dialogue.Replace("'", "''");
+
+            exDialolgue = exDialolgue.Replace("\"", "'");
+            exDialolgue = exDialolgue.Replace("'", "''");
+
             var reward = "";
             var amount = "";
             foreach (var pair in rewardData)
@@ -399,7 +421,7 @@ namespace QuestEditor
                 "UseGenericExceptionDialogue = '" + useGeneric + "', " +
                 "UseTypedExceptionDialogue = '" + useTyped + "', " +
                 "Reward = '" + reward + "', " +
-                "RewardAmount = '" + amount + "' " +
+                "RewardAmount = '" + amount + "', " +
                 "AmountOfAttempts = '" + amountOfAttempts + "' " +
                 "WHERE ID = '" + stepID + "'";
 

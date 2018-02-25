@@ -34,6 +34,7 @@
             this.button_CreateQuest = new System.Windows.Forms.Button();
             this.button_Cancel = new System.Windows.Forms.Button();
             this.richTextBox_Description = new System.Windows.Forms.RichTextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -47,6 +48,8 @@
             // 
             // textBox_QuestName
             // 
+            this.textBox_QuestName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox_QuestName.Location = new System.Drawing.Point(12, 27);
             this.textBox_QuestName.Name = "textBox_QuestName";
             this.textBox_QuestName.Size = new System.Drawing.Size(348, 20);
@@ -54,6 +57,7 @@
             // 
             // button_CreateQuest
             // 
+            this.button_CreateQuest.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.button_CreateQuest.Location = new System.Drawing.Point(12, 401);
             this.button_CreateQuest.Name = "button_CreateQuest";
             this.button_CreateQuest.Size = new System.Drawing.Size(100, 100);
@@ -64,6 +68,7 @@
             // 
             // button_Cancel
             // 
+            this.button_Cancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button_Cancel.Location = new System.Drawing.Point(260, 401);
             this.button_Cancel.Name = "button_Cancel";
             this.button_Cancel.Size = new System.Drawing.Size(100, 100);
@@ -74,17 +79,30 @@
             // 
             // richTextBox_Description
             // 
-            this.richTextBox_Description.Location = new System.Drawing.Point(12, 54);
+            this.richTextBox_Description.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.richTextBox_Description.Location = new System.Drawing.Point(12, 66);
             this.richTextBox_Description.Name = "richTextBox_Description";
-            this.richTextBox_Description.Size = new System.Drawing.Size(348, 341);
+            this.richTextBox_Description.Size = new System.Drawing.Size(348, 329);
             this.richTextBox_Description.TabIndex = 4;
             this.richTextBox_Description.Text = "";
             // 
-            // Quest
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(12, 50);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(88, 13);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "Quest Desciption";
+            // 
+            // QuestForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(372, 513);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.richTextBox_Description);
             this.Controls.Add(this.button_Cancel);
             this.Controls.Add(this.button_CreateQuest);
@@ -104,5 +122,6 @@
         private System.Windows.Forms.Button button_CreateQuest;
         private System.Windows.Forms.Button button_Cancel;
         private System.Windows.Forms.RichTextBox richTextBox_Description;
+        private System.Windows.Forms.Label label2;
     }
 }

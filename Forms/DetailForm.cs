@@ -124,7 +124,9 @@ namespace QuestEditor
         public int      Timer           { get { return GetTimerDuration(); } }
         int GetAmount()
         {
-            return Int32.Parse(textBox_Amount.Text);
+            var amount = Int32.Parse(textBox_Amount.Text);
+            if (amount == 0) amount = -1;
+            return amount;
         }
         int GetTimerDuration()
         {
