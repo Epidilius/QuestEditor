@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using MySql.Data.MySqlClient;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
@@ -12,26 +13,27 @@ namespace QuestEditor
     public static class DatabaseManager
     {
         //TODO: Refactor this class
-        static string ConnectionString = ConfigurationManager.ConnectionStrings["QuestEditor.Properties.Settings.ParallelZodiacConnectionString"].ConnectionString;
+        //static string ConnectionString = ConfigurationManager.ConnectionStrings["QuestEditor.Properties.Settings.ParallelZodiacConnectionString"].ConnectionString;
+        static string ConnectionString = "Server=parallelzodiac.com; Port=3306; Database=ParallelZodiac;Uid=DBMan;Pwd=Sch00n3r1;";
         private static readonly object _syncObject = new object();
-
+        
         //Utility Functions
-        static SqlCommand CreateCommand(string query)
+        static MySqlCommand CreateCommand(string query)
         {
-            SqlConnection con = new SqlConnection(ConnectionString);
+            MySqlConnection con = new MySqlConnection(ConnectionString);
 
-            SqlCommand command = new SqlCommand();
+            MySqlCommand command = new MySqlCommand();
             command.Connection = con;
             command.CommandType = CommandType.Text;
             command.CommandText = query;
 
             return command;
         }
-        static SqlCommand CreateCommandWithArgs(string query, Dictionary<string, object> values)
+        static MySqlCommand CreateCommandWithArgs(string query, Dictionary<string, object> values)
         {
-            SqlConnection con = new SqlConnection(ConnectionString);
+            MySqlConnection con = new MySqlConnection(ConnectionString);
 
-            SqlCommand command = new SqlCommand();
+            MySqlCommand command = new MySqlCommand();
             command.Connection = con;
             command.CommandType = CommandType.Text;
 
@@ -86,13 +88,13 @@ namespace QuestEditor
 
             return command;
         }
-        static SqlDataAdapter CreateDataAdapter(SqlCommand command)
+        static MySqlDataAdapter CreateDataAdapter(MySqlCommand command)
         {
-            SqlDataAdapter adapter = new SqlDataAdapter(command);
+            MySqlDataAdapter adapter = new MySqlDataAdapter(command);
 
             return adapter;
         }
-        static DataTable CreateDataTable(SqlDataAdapter dataAdapter)
+        static DataTable CreateDataTable(MySqlDataAdapter dataAdapter)
         {
             DataTable table = new DataTable();
             dataAdapter.Fill(table);
@@ -103,8 +105,8 @@ namespace QuestEditor
         {
             lock (_syncObject)
             {
-                SqlCommand command = CreateCommand(query);
-                SqlDataAdapter adapter = CreateDataAdapter(command);
+                MySqlCommand command = CreateCommand(query);
+                MySqlDataAdapter adapter = CreateDataAdapter(command);
                 DataTable table = CreateDataTable(adapter);
 
                 return table;
@@ -114,8 +116,8 @@ namespace QuestEditor
         {
             lock (_syncObject)
             {
-                SqlCommand command = CreateCommandWithArgs(query, values);
-                SqlDataAdapter adapter = CreateDataAdapter(command);
+                MySqlCommand command = CreateCommandWithArgs(query, values);
+                MySqlDataAdapter adapter = CreateDataAdapter(command);
                 DataTable table = CreateDataTable(adapter);
 
                 return table;
@@ -273,15 +275,14 @@ namespace QuestEditor
         //Create Functions
         public static void CreateQuest(string questName, string description)
         {
-            var connString = ConfigurationManager.ConnectionStrings["QuestEditor.Properties.Settings.ParallelZodiacConnectionString"].ConnectionString;
             var cmdString = "INSERT INTO Quests (Name, Description, Version) VALUES (@val1, @val2, @val3)";
 
             description = description.Replace("\"", "'");
             description = description.Replace("'", "''");
 
-            using (SqlConnection conn = new SqlConnection(connString))
+            using (MySqlConnection conn = new MySqlConnection(ConnectionString))
             {
-                using (SqlCommand comm = new SqlCommand())
+                using (MySqlCommand comm = new MySqlCommand())
                 {
                     comm.Connection = conn;
                     comm.CommandText = cmdString;
@@ -302,7 +303,6 @@ namespace QuestEditor
         }
         public static void CreateStep(int questID, string stepName, string dialogue, string exDialolgue, int useGeneric, int useTyped, Dictionary<string, string> rewardData, int amountOfAttempts)
         {
-            var connString = ConfigurationManager.ConnectionStrings["QuestEditor.Properties.Settings.ParallelZodiacConnectionString"].ConnectionString;
             var cmdString = "INSERT INTO Steps (QuestID, StepName, Dialogue, ExceptionDialogue, UseGenericExceptionDialogue, UseTypedExceptionDialogue, Reward, RewardAmount, AmountOfAttempts) VALUES (@val1, @val2, @val3, @val4, @val5, @val6, @val7, @val8, @val9)";
 
             dialogue = dialogue.Replace("\"", "'");
@@ -324,9 +324,9 @@ namespace QuestEditor
                 amount += pair.Value;
             }
 
-            using (SqlConnection conn = new SqlConnection(connString))
+            using (MySqlConnection conn = new MySqlConnection(ConnectionString))
             {
-                using (SqlCommand comm = new SqlCommand())
+                using (MySqlCommand comm = new MySqlCommand())
                 {
                     comm.Connection = conn;
                     comm.CommandText = cmdString;
@@ -354,12 +354,11 @@ namespace QuestEditor
         }
         public static void CreateDetail(int stepID, string activeEntity, int action, int amount, int timer, string passiveEntity)
         {
-            var connString = ConfigurationManager.ConnectionStrings["QuestEditor.Properties.Settings.ParallelZodiacConnectionString"].ConnectionString;
             var cmdString = "INSERT INTO Details (StepID, ActiveEntity, Action, Amount, Timer, PassiveEntity) VALUES (@val1, @val2, @val3, @val4, @val5, @val6)";
 
-            using (SqlConnection conn = new SqlConnection(connString))
+            using (MySqlConnection conn = new MySqlConnection(ConnectionString))
             {
-                using (SqlCommand comm = new SqlCommand())
+                using (MySqlCommand comm = new MySqlCommand())
                 {
                     comm.Connection = conn;
                     comm.CommandText = cmdString;
