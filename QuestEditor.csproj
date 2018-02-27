@@ -90,8 +90,12 @@
       <DependentUpon>StepForm.cs</DependentUpon>
     </Compile>
     <Compile Include="QuestBuilder.cs" />
-    <Content Include="QuestFiles\ExampleQuest.txt" />
-    <Content Include="QuestFiles\1.txt" />
+    <EmbeddedResource Include="QuestFiles\ExampleQuest.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QuestFiles\1.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="QuestFiles\Detail.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
